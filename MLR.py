@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # User-provided data
-data = pd.read_csv('Dataset.csv')
-X1 = np.array(data['Independent_column1_name'].values)
-X2 = np.array(data['Independent_column2_name'].values)
-y = np.array(data['Dependent_column_name'].values)
+data = pd.read_csv("C:/Users/Krish/Desktop/College/Year 4/Sem 7/Machine Learning(ML)/Practicals/Practical Exam/MLPRAC/Iris.csv")
+X1 = np.array(data['SepalLengthCm'].values)
+X2 = np.array(data['SepalWidthCm'].values)
+y = np.array(data['PetalWidthCm'].values)
 
 # Concatenate the features and add a column of ones for the intercept
 X = np.vstack((X1, X2, np.ones(X1.shape[0]))).T
@@ -31,6 +31,11 @@ predictions = predict(X1, X2)
 rmse = np.sqrt(np.mean((y - predictions) ** 2))
 
 print("Root Mean Square Error (RMSE):", rmse)
+
+new_x1 = int(input("Enter the value of x1 for testing the regression model: "))
+new_x2 = int(input("Enter the value of x2 for testing the regression model: "))
+
+print(f'Predicted value of y is: {predict(new_x1, new_x2)}')
 
 # Create a grid for plotting
 x1 = np.linspace(min(X1), max(X1), 10)
