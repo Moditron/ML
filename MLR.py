@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # User-provided data
-data = pd.read_csv("C:/Users/Krish/Desktop/College/Year 4/Sem 7/Machine Learning(ML)/Practicals/Practical Exam/MLPRAC/Iris.csv")
-X1 = np.array(data['SepalLengthCm'].values)
-X2 = np.array(data['SepalWidthCm'].values)
-y = np.array(data['PetalWidthCm'].values)
+data = pd.read_csv('Dataset.csv')
+X1 = np.array(data['Independent_Variable1_Name'].values)
+X2 = np.array(data['Independent_Variable2_Name'].values)
+y = np.array(data['Dependent_Variable_Name'].values)
 
 # Concatenate the features and add a column of ones for the intercept
 X = np.vstack((X1, X2, np.ones(X1.shape[0]))).T

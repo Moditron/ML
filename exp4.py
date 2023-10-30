@@ -4,8 +4,8 @@ import pandas as pd
 
 # Sample data
 data = pd.read_csv('Dataset.csv')
-X = np.array(data[['SepalLengthCm', 'SepalWidthCm']].values)
-y = data['PetalWidthCm'].values
+X = np.array(data[['Independent_Variable1_Name', 'Independent_Variable2_Name']].values)
+y = data['Dependent_Variable_Name'].values
 
 # Sigmoid function
 def sigmoid(z):
@@ -33,12 +33,13 @@ def train_logistic_regression(X, y, learning_rate, num_iterations):
 learning_rate = 0.01
 num_iterations = 1000
 trained_weights, trained_bias = train_logistic_regression(X, y, learning_rate, num_iterations)
-
+print("Learned Weights:", trained_weights)
+print("Learned Bias:", trained_bias)
 # Make predictions
 def predict(X, weights, bias):
     linear_model = np.dot(X, weights) + bias
     predictions = sigmoid(linear_model)
-    return [1 if p >= 0.5 else 0 for p in predictions]
+    return [1 if p>0.5 else 0 for p in predictions]
 
 # Create a scatter plot of the data
 plt.scatter(X[y == 0][:, 0], X[y == 0][:, 1], label='Class 0', color='blue')
